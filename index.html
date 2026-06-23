@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eswar Sai Chandra Reddy Gudimetla — AI Engineer</title>
+<meta name="description" content="AI Engineer & Computer Vision specialist. Portfolio of Eswar Sai Chandra Reddy Gudimetla.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0E14;
+    --bg-soft:#10141C;
+    --bg-card:#12161F;
+    --text:#F1F3F6;
+    --text-dim:#8B93A1;
+    --text-faint:#5A6273;
+    --accent:#4DD9C0;
+    --accent-soft:rgba(77,217,192,0.12);
+    --accent-2:#F2A65A;
+    --accent-2-soft:rgba(242,166,90,0.12);
+    --line:rgba(241,243,246,0.10);
+    --line-strong:rgba(241,243,246,0.18);
+    --mono:'IBM Plex Mono', monospace;
+    --display:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+    --maxw:1120px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:48px 48px;
+    background-position:center top;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+
+  ::selection{background:var(--accent); color:#04110E;}
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .mono{font-family:var(--mono);}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:6px;height:6px;
+    background:var(--accent);
+    border-radius:50%;
+    box-shadow:0 0 0 3px var(--accent-soft);
+  }
+
+  h1,h2,h3{font-family:var(--display); font-weight:600; letter-spacing:-0.01em;}
+
+  /* ---------- Corner-bracket "viewfinder" frame: signature motif ---------- */
+  .frame{position:relative;}
+  .frame .corner{
+    position:absolute;
+    width:16px; height:16px;
+    border:2px solid var(--accent);
+    opacity:0.9;
+    transition:width .25s ease, height .25s ease;
+  }
+  .frame .corner.tl{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .frame .corner.tr{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+  .frame .corner.bl{bottom:-1px;left:-1px;border-right:none;border-top:none;}
+  .frame .corner.br{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .frame:hover .corner{width:22px;height:22px;}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(11,14,20,0.78);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--mono); font-size:15px; font-weight:600;
+    letter-spacing:0.02em; color:var(--text);
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo .dot{color:var(--accent);}
+  .nav-links{display:flex; gap:30px; font-family:var(--mono); font-size:13px; color:var(--text-dim);}
+  .nav-links a{position:relative; padding:4px 0; transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--accent); transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    font-family:var(--mono); font-size:13px;
+    border:1px solid var(--line-strong); padding:8px 16px;
+    border-radius:3px; color:var(--text); white-space:nowrap;
+    transition:border-color .2s, background .2s;
+  }
+  .nav-cta:hover{border-color:var(--accent); background:var(--accent-soft);}
+  .menu-btn{display:none; background:none; border:none; color:var(--text); cursor:pointer;}
+
+  @media (max-width:840px){
+    .nav-links{display:none;}
+    .menu-btn{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding:140px 0 80px;
+    position:relative;
+  }
+  .hero .wrap{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center;
+  }
+  .hero-copy h1{
+    font-size:clamp(34px,5vw,58px);
+    line-height:1.06; margin:18px 0 20px;
+  }
+  .hero-copy h1 span{color:var(--accent);}
+  .hero-copy p.pitch{
+    color:var(--text-dim); font-size:17px; max-width:520px; margin-bottom:32px;
+  }
+  .hero-tags{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px;}
+  .hero-tags span{
+    font-family:var(--mono); font-size:12px; color:var(--text-dim);
+    border:1px solid var(--line-strong); padding:6px 12px; border-radius:3px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13.5px; padding:13px 22px;
+    border-radius:3px; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--accent); color:#04110E; font-weight:600;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 8px 24px -8px var(--accent);}
+  .btn-outline{border:1px solid var(--line-strong); color:var(--text);}
+  .btn-outline:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-2px);}
+
+  .hero-visual{position:relative;}
+  .viewfinder{
+    aspect-ratio:1/1.05;
+    border:1px solid var(--line);
+    background:linear-gradient(160deg, var(--bg-soft), var(--bg-card));
+    position:relative;
+    overflow:hidden;
+  }
+  .viewfinder .avatar{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-size:96px; font-weight:700;
+    color:var(--text-faint); letter-spacing:0.02em;
+  }
+  .viewfinder .scanline{
+    position:absolute; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity:0.7;
+    animation:scan 4.5s ease-in-out infinite;
+  }
+  @keyframes scan{
+    0%,100%{ top:6%; opacity:0; }
+    8%{ opacity:.8; }
+    50%{ top:92%; opacity:.6; }
+    92%{opacity:0;}
+  }
+  .tag-callout{
+    position:absolute;
+    font-family:var(--mono); font-size:11.5px;
+    background:var(--bg); border:1px solid var(--accent);
+    color:var(--accent); padding:6px 10px; border-radius:2px;
+    white-space:nowrap;
+  }
+  .tag-callout.t1{top:8%; right:-14px;}
+  .tag-callout.t2{bottom:10%; left:-18px; border-color:var(--accent-2); color:var(--accent-2);}
+  .tick-row{
+    position:absolute; bottom:-26px; left:0; right:0;
+    display:flex; justify-content:space-between;
+    font-family:var(--mono); font-size:10px; color:var(--text-faint);
+  }
+
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr; gap:50px;}
+    .hero{padding-top:120px;}
+    .hero-visual{max-width:320px; margin:0 auto;}
+  }
+
+  /* ---------- Section shells ---------- */
+  section{padding:120px 0; border-bottom:1px solid var(--line); position:relative;}
+  .section-head{margin-bottom:56px; max-width:620px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,38px); margin-top:14px;}
+  .section-head p{color:var(--text-dim); margin-top:14px; font-size:15.5px;}
+
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:60px;}
+  .about-grid p{color:var(--text-dim); font-size:16px; margin-bottom:18px;}
+  .facts{border:1px solid var(--line); border-radius:6px; overflow:hidden;}
+  .fact-row{
+    display:flex; justify-content:space-between; gap:14px;
+    padding:16px 20px; border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .fact-row:last-child{border-bottom:none;}
+  .fact-row .k{font-family:var(--mono); color:var(--text-faint); font-size:12px; text-transform:uppercase; letter-spacing:.05em;}
+  .fact-row .v{color:var(--text); text-align:right;}
+  @media (max-width:840px){.about-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Experience: log timeline ---------- */
+  .timeline{border-left:1px solid var(--line-strong); margin-left:8px;}
+  .tl-item{position:relative; padding:0 0 56px 36px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-5px; top:4px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--accent);
+  }
+  .tl-date{font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:.04em;}
+  .tl-role{font-size:21px; margin:8px 0 2px;}
+  .tl-meta{color:var(--text-faint); font-size:13.5px; margin-bottom:14px;}
+  .tl-item ul{display:flex; flex-direction:column; gap:8px;}
+  .tl-item li{color:var(--text-dim); font-size:15px; padding-left:18px; position:relative;}
+  .tl-item li::before{content:"—"; position:absolute; left:0; color:var(--text-faint);}
+
+  /* ---------- Skills ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:48px 50px;}
+  @media (max-width:1020px){.skills-grid{grid-template-columns:1fr 1fr;}}
+  .skill-cat h3{font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); margin-bottom:20px; font-weight:500;}
+  .skill{margin-bottom:16px;}
+  .skill-top{display:flex; justify-content:space-between; font-size:14.5px; margin-bottom:7px;}
+  .skill-top .pct{font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+  .bar{height:5px; background:var(--bg-card); border:1px solid var(--line); border-radius:3px; overflow:hidden;}
+  .bar-fill{height:100%; width:0%; background:linear-gradient(90deg, var(--accent), var(--accent-2)); transition:width 1.1s cubic-bezier(.2,.8,.2,1);}
+  @media (max-width:680px){.skills-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Projects ---------- */
+  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .proj-card{
+    background:var(--bg-card); border:1px solid var(--line);
+    padding:28px; border-radius:6px;
+    display:flex; flex-direction:column; gap:14px;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .proj-card:hover{transform:translateY(-4px); border-color:var(--line-strong);}
+  .proj-label{font-family:var(--mono); font-size:11px; color:var(--accent-2); letter-spacing:.06em;}
+  .proj-card h3{font-size:20px;}
+  .proj-card p{color:var(--text-dim); font-size:14.5px; flex-grow:1;}
+  .proj-tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .proj-tags span{font-family:var(--mono); font-size:11px; color:var(--text-dim); border:1px solid var(--line); padding:4px 9px; border-radius:3px;}
+  .proj-link{font-family:var(--mono); font-size:13px; color:var(--accent); display:inline-flex; align-items:center; gap:6px;}
+  .proj-link:hover{text-decoration:underline;}
+  @media (max-width:780px){.proj-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Education / Certs ---------- */
+  .edu-cert{display:grid; grid-template-columns:1fr 1.4fr; gap:60px;}
+  .edu-card{border:1px solid var(--line); border-radius:6px; padding:26px;}
+  .edu-card .tl-date{display:block; margin-bottom:10px;}
+  .edu-card h3{font-size:19px; margin-bottom:4px;}
+  .edu-card .tl-meta{margin-bottom:0;}
+  .cert-list{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .cert-item{
+    border:1px solid var(--line); border-radius:6px; padding:16px 18px;
+    font-size:13.5px; display:flex; flex-direction:column; gap:4px;
+  }
+  .cert-item .cname{color:var(--text);}
+  .cert-item .cmeta{font-family:var(--mono); font-size:11.5px; color:var(--text-faint);}
+  @media (max-width:840px){.edu-cert{grid-template-columns:1fr;} .cert-list{grid-template-columns:1fr;}}
+
+  /* ---------- Contact ---------- */
+  .contact{border-bottom:none;}
+  .contact-box{
+    border:1px solid var(--line); border-radius:8px; padding:56px;
+    display:grid; grid-template-columns:1.2fr 1fr; gap:50px; align-items:center;
+    position:relative; overflow:hidden;
+  }
+  .contact-box h2{font-size:clamp(26px,3.6vw,36px); margin-bottom:14px;}
+  .contact-box p{color:var(--text-dim); font-size:15.5px; max-width:440px;}
+  .contact-links{display:flex; flex-direction:column; gap:14px;}
+  .contact-link{
+    display:flex; align-items:center; justify-content:space-between;
+    border:1px solid var(--line); border-radius:5px; padding:14px 18px;
+    font-family:var(--mono); font-size:13.5px; transition:border-color .2s, background .2s;
+  }
+  .contact-link:hover{border-color:var(--accent); background:var(--accent-soft);}
+  .contact-link .k{color:var(--text-faint); font-size:11px; text-transform:uppercase; letter-spacing:.05em;}
+  @media (max-width:840px){.contact-box{grid-template-columns:1fr; padding:36px;}}
+
+  footer{padding:34px 0; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">ESG<span class="dot">.</span><span class="mono" style="color:var(--text-faint); font-size:12px;">ai-engineer</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home" style="border-bottom:1px solid var(--line); padding-bottom:80px;">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">SOFTWARE_ENGINEER.detect(AI=true) — confidence 99.2%</span>
+        <h1>Eswar Sai Chandra Reddy <span>Gudimetla</span></h1>
+        <p class="pitch">I build systems that see, learn, and decide. Computer Science graduate (M.S., Saint Louis University) and AI Engineer with hands-on roots in computer vision, applied ML, cloud, and full-stack engineering. Open to full-time roles across the USA.</p>
+        <div class="hero-tags">
+          <span>AI / ML</span>
+          <span>Computer Vision</span>
+          <span>AWS · Docker · Kubernetes</span>
+          <span>Python · SQL · TensorFlow</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects →</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="viewfinder frame">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="avatar">ES</div>
+          <div class="scanline"></div>
+          <div class="tag-callout t1">role: Software Engineer with AI</div>
+          <div class="tag-callout t2">location: USA</div>
+        </div>
+        <div class="tick-row"><span>00</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">01 — About</span>
+        <h2>Trained on curiosity, deployed in production.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>I'm a Computer Science graduate (M.S., Saint Louis University) and AI Engineer who got here through computer vision — teaching machines to track a hand, read a gesture, recognize a pattern — and stayed for the broader problem of building software systems people can actually rely on, from ML models to full-stack apps and cloud infrastructure.</p>
+          <p>I currently work at Rebecca Everlene Trust Company, building AI-driven systems for financial and trust-services workflows. Before that, I was a Research Assistant at GITAM Deemed University, where I worked on applied deep learning and computer vision research, and a Cloud & DevOps Intern at Phoenix Global, where I learned how models actually get from a notebook into the world.</p>
+          <p>I hold an M.S. in Computer Science from Saint Louis University, and I'm always happiest at the intersection of research and shipped code.</p>
+        </div>
+        <div class="facts reveal">
+          <div class="fact-row"><span class="k">Based in</span><span class="v">USA</span></div>
+          <div class="fact-row"><span class="k">Current role</span><span class="v">AI Engineer, Rebecca Everlene Trust Co.</span></div>
+          <div class="fact-row"><span class="k">Education</span><span class="v">M.S. Computer Science, SLU</span></div>
+          <div class="fact-row"><span class="k">Focus</span><span class="v">AI/ML · Computer Vision · Cloud</span></div>
+          <div class="fact-row"><span class="k">Certifications</span><span class="v">10, incl. Deep Learning in CV</span></div>
+          <div class="fact-row"><span class="k">Status</span><span class="v">Open to full-time roles (USA)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">02 — Experience</span>
+        <h2>Where the models met the real world.</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-date">FEB 2026 — PRESENT</div>
+          <h3 class="tl-role">AI Engineer</h3>
+          <div class="tl-meta">Rebecca Everlene Trust Company · Chicago, USA</div>
+          <ul>
+            <li>Design and build AI-driven systems supporting trust and financial-services workflows.</li>
+            <li>Work across the ML lifecycle — data pipelines, model development, evaluation, and production deployment.</li>
+          </ul>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-date">SEP 2022 — MAY 2023</div>
+          <h3 class="tl-role">Research Assistant</h3>
+          <div class="tl-meta">GITAM Deemed University · Visakhapatnam, India</div>
+          <ul>
+            <li>Conducted applied research in computer vision and deep learning under faculty supervision.</li>
+            <li>Ran model experiments, reviewed literature, and documented findings for ongoing research projects.</li>
+          </ul>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-date">MAY 2022 — JUL 2022</div>
+          <h3 class="tl-role">Cloud & DevOps Intern</h3>
+          <div class="tl-meta">Phoenix Global · Hyderabad, India</div>
+          <ul>
+            <li>Supported cloud infrastructure setup and CI/CD pipelines for application deployments.</li>
+            <li>Gained hands-on experience with cloud-native tooling to streamline build and release workflows.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">03 — Skills</span>
+        <h2>Detected proficiencies.</h2>
+        <p>Self-assessed confidence scores — same metaphor a vision model would use to label what it sees.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-cat reveal">
+          <h3>AI / Machine Learning</h3>
+          <div class="skill" data-pct="93"><div class="skill-top"><span>Python</span><span class="pct">93%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+          <div class="skill" data-pct="88"><div class="skill-top"><span>Computer Vision (OpenCV, MediaPipe)</span><span class="pct">88%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+          <div class="skill" data-pct="85"><div class="skill-top"><span>Deep Learning (TensorFlow / Keras)</span><span class="pct">85%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+          <div class="skill" data-pct="74"><div class="skill-top"><span>NLP fundamentals</span><span class="pct">74%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+        </div>
+        <div class="skill-cat reveal">
+          <h3>Cloud & Data</h3>
+          <div class="skill" data-pct="82"><div class="skill-top"><span>AWS</span><span class="pct">82%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+          <div class="skill" data-pct="80"><div class="skill-top"><span>SQL & Data Analytics</span><span class="pct">80%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+          <div class="skill" data-pct="76"><div class="skill-top"><span>Docker</span><span class="pct">76%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+          <div class="skill" data-pct="70"><div class="skill-top"><span>Kubernetes</span><span class="pct">70%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+        </div>
+        <div class="skill-cat reveal">
+          <h3>Engineering & Web</h3>
+          <div class="skill" data-pct="82"><div class="skill-top"><span>Data Structures & Algorithms</span><span class="pct">82%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+          <div class="skill" data-pct="78"><div class="skill-top"><span>Git & CI/CD</span><span class="pct">78%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+          <div class="skill" data-pct="75"><div class="skill-top"><span>Object-Oriented Design</span><span class="pct">75%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+          <div class="skill" data-pct="72"><div class="skill-top"><span>JavaScript / Web Development</span><span class="pct">72%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">04 — Projects</span>
+        <h2>Things I've shipped and broken on purpose.</h2>
+      </div>
+      <div class="proj-grid">
+
+        <div class="proj-card frame reveal">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <span class="proj-label">[ COMPUTER VISION ]</span>
+          <h3>Hand Gesture-Controlled Cursor System</h3>
+          <p>A real-time system that tracks hand landmarks via webcam and translates gestures into cursor movement and clicks — no mouse required.</p>
+          <div class="proj-tags"><span>Python</span><span>OpenCV</span><span>MediaPipe</span></div>
+          <a class="proj-link" href="https://github.com/Eswargudimetla/cursor-movement-with-hand-gestures" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj-card frame reveal">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <span class="proj-label">[ COMPUTER VISION ]</span>
+          <h3>Parking Space Detection System</h3>
+          <p>A vision-based system that detects open vs. occupied parking spaces from camera footage in real time, built on classic CV detection techniques.</p>
+          <div class="proj-tags"><span>Python</span><span>OpenCV</span><span>Object Detection</span></div>
+          <a class="proj-link" href="https://github.com/Eswargudimetla/Car-parking-lot-" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj-card frame reveal">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <span class="proj-label">[ MACHINE LEARNING ]</span>
+          <h3>Stock Market Prediction</h3>
+          <p>A time-series forecasting model that predicts stock price trends from historical market data, comparing classical and ML-based approaches.</p>
+          <div class="proj-tags"><span>Python</span><span>Time Series</span><span>Machine Learning</span></div>
+          <a class="proj-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">More on GitHub →</a>
+        </div>
+
+        <div class="proj-card frame reveal">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <span class="proj-label">[ DATA ANALYTICS ]</span>
+          <h3>Sales Data Analysis & Dashboard</h3>
+          <p>An end-to-end sales analysis project — cleaning raw data, querying with SQL, and visualizing trends in an interactive dashboard.</p>
+          <div class="proj-tags"><span>SQL</span><span>Data Analysis</span><span>Dashboard</span></div>
+          <a class="proj-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">More on GitHub →</a>
+        </div>
+
+        <div class="proj-card frame reveal">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <span class="proj-label">[ WEB APPLICATION ]</span>
+          <h3>DriveLink – Car Rental Platform</h3>
+          <p>A full-stack car rental platform handling listings, bookings, and availability — built end-to-end as a real-world product simulation.</p>
+          <div class="proj-tags"><span>JavaScript</span><span>Full-Stack</span><span>Web App</span></div>
+          <a class="proj-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">More on GitHub →</a>
+        </div>
+
+        <div class="proj-card frame reveal">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <span class="proj-label">[ WEB APPLICATION ]</span>
+          <h3>SLU Insta</h3>
+          <p>An Instagram-inspired social platform built for the Saint Louis University community — feeds, posts, and profiles in a focused web app.</p>
+          <div class="proj-tags"><span>JavaScript</span><span>Frontend</span><span>Web App</span></div>
+          <a class="proj-link" href="https://github.com/Eswargudimetla/slu-insta" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj-card frame reveal">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <span class="proj-label">[ PRODUCTIVITY ]</span>
+          <h3>Gym Reminder Mobile Application</h3>
+          <p>A lightweight scheduling app that nudges users to stay consistent with workouts, built around simple, reliable reminder logic.</p>
+          <div class="proj-tags"><span>JavaScript</span><span>Mobile</span><span>Scheduling</span></div>
+          <a class="proj-link" href="https://github.com/Eswargudimetla/gym-reminder-app" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION & CERTS -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">05 — Education & Certifications</span>
+        <h2>The training data.</h2>
+      </div>
+      <div class="edu-cert">
+        <div class="edu-card reveal">
+          <span class="tl-date mono">JAN 2024 — DEC 2025</span>
+          <h3>M.S. in Computer Science</h3>
+          <div class="tl-meta">Saint Louis University</div>
+        </div>
+        <div class="cert-list reveal">
+          <div class="cert-item"><span class="cname">Deep Learning in Computer Vision</span><span class="cmeta">HSE University · 2020</span></div>
+          <div class="cert-item"><span class="cname">Data Structures</span><span class="cmeta">UC San Diego · 2020</span></div>
+          <div class="cert-item"><span class="cname">Introduction to Artificial Intelligence</span><span class="cmeta">IBM · 2020</span></div>
+          <div class="cert-item"><span class="cname">TensorFlow for CNNs</span><span class="cmeta">Guided Project · 2020</span></div>
+          <div class="cert-item"><span class="cname">Image Classification with CNNs (Keras)</span><span class="cmeta">Guided Project · 2020</span></div>
+          <div class="cert-item"><span class="cname">Object-Oriented Design</span><span class="cmeta">University of Alberta · 2021</span></div>
+          <div class="cert-item"><span class="cname">Database Management Essentials</span><span class="cmeta">University of Colorado System · 2021</span></div>
+          <div class="cert-item"><span class="cname">Agile Software Development</span><span class="cmeta">University of Minnesota · 2022</span></div>
+          <div class="cert-item"><span class="cname">Cloud Computing Basics</span><span class="cmeta">LearnQuest · 2022</span></div>
+          <div class="cert-item"><span class="cname">Cloud Computing Foundations</span><span class="cmeta">Duke University · 2022</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <div>
+          <span class="eyebrow">06 — Contact</span>
+          <h2>Let's build something that ships.</h2>
+          <p>Open to AI engineering, computer vision, and applied ML roles. The fastest way to reach me is LinkedIn or phone — I respond quickly.</p>
+        </div>
+        <div class="contact-links">
+          <a class="contact-link" href="tel:+13147663166"><span><span class="k">Phone</span><br>+1 (314) 766-3166</span><span>↗</span></a>
+          <a class="contact-link" href="https://www.linkedin.com/in/eswar-sai-chandra-reddy-gudimetla-255970227/" target="_blank" rel="noopener"><span><span class="k">LinkedIn</span><br>/in/eswar-sai-chandra-reddy-gudimetla</span><span>↗</span></a>
+          <a class="contact-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener"><span><span class="k">GitHub</span><br>/Eswargudimetla</span><span>↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 Eswar Sai Chandra Reddy Gudimetla — built from scratch, line by line.</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Skill bar fill on view
+  const skillEls = document.querySelectorAll('.skill');
+  const skillIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const fill = e.target.querySelector('.bar-fill');
+        fill.style.width = e.target.dataset.pct + '%';
+        skillIO.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.3});
+  skillEls.forEach(el=>skillIO.observe(el));
+</script>
+
+</body>
+</html>
