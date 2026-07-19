@@ -1,985 +1,813 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="default">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eswar Sai Chandra Reddy Gudimetla — AI Engineer</title>
-<meta name="description" content="AI Engineer & Computer Vision specialist. Portfolio of Eswar Sai Chandra Reddy Gudimetla.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<style>
-  :root{
-    --bg:#0B0E14;
-    --bg-soft:#10141C;
-    --bg-card:#12161F;
-    --text:#F1F3F6;
-    --text-dim:#8B93A1;
-    --text-faint:#5A6273;
-    --accent:#8B5CF6;
-    --accent-2:#FBBF24;
-    --accent-soft:color-mix(in srgb, var(--accent) 16%, transparent);
-    --accent-2-soft:color-mix(in srgb, var(--accent-2) 16%, transparent);
-    --line:rgba(241,243,246,0.10);
-    --line-strong:rgba(241,243,246,0.18);
-    --mono:'IBM Plex Mono', monospace;
-    --display:'Space Grotesk', sans-serif;
-    --body:'Inter', sans-serif;
-    --maxw:1120px;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eswar Sai Chandra Reddy Gudimetla — AI Engineer & Computer Vision Specialist</title>
+  <meta name="description" content="AI Engineer & Computer Vision Specialist. MS in CS from Saint Louis University. Portfolio showcasing CV systems, ML pipelines, and full-stack software engineering.">
+  <meta name="theme-color" content="#07090e">
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
-  }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--body);
-    line-height:1.6;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size:48px 48px;
-    background-position:center top;
-    overflow-x:hidden;
-  }
+  <!-- CDNs: Three.js, Lucide Icons, Canvas-Confetti -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  /* ---------- Colorful gradient-mesh backdrop ---------- */
-  .mesh-bg{position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none;}
-  .mesh-bg span{position:absolute; width:480px; height:480px; border-radius:50%; filter:blur(120px); opacity:0.32; animation:drift 24s ease-in-out infinite;}
-  .mesh-bg .b1{background:#8B5CF6; top:-140px; left:-100px;}
-  .mesh-bg .b2{background:#22D3EE; top:8%; right:-160px; animation-delay:-6s;}
-  .mesh-bg .b3{background:#F472B6; bottom:6%; left:18%; animation-delay:-12s;}
-  .mesh-bg .b4{background:#FBBF24; bottom:-160px; right:8%; animation-delay:-18s;}
-  @keyframes drift{
-    0%,100%{ transform:translate(0,0) scale(1); }
-    50%{ transform:translate(36px,-26px) scale(1.12); }
-  }
-
-  a{color:inherit; text-decoration:none;}
-  ul{list-style:none;}
-  img{max-width:100%; display:block;}
-
-  ::selection{background:var(--accent); color:#fff;}
-
-  :focus-visible{
-    outline:2px solid var(--accent);
-    outline-offset:3px;
-    border-radius:2px;
-  }
-
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
-  .mono{font-family:var(--mono);}
-
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12.5px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--accent);
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:6px;height:6px;
-    background:var(--accent);
-    border-radius:50%;
-    box-shadow:0 0 0 3px var(--accent-soft);
-  }
-
-  h1,h2,h3{font-family:var(--display); font-weight:600; letter-spacing:-0.01em;}
-
-  /* ---------- Corner-bracket "viewfinder" frame: signature motif ---------- */
-  .frame{position:relative;}
-  .frame .corner{
-    position:absolute;
-    width:16px; height:16px;
-    border:2px solid var(--accent);
-    opacity:0.9;
-    transition:width .25s ease, height .25s ease;
-  }
-  .frame .corner.tl{top:-1px;left:-1px;border-right:none;border-bottom:none;}
-  .frame .corner.tr{top:-1px;right:-1px;border-left:none;border-bottom:none;}
-  .frame .corner.bl{bottom:-1px;left:-1px;border-right:none;border-top:none;}
-  .frame .corner.br{bottom:-1px;right:-1px;border-left:none;border-top:none;}
-  .frame:hover .corner{width:22px;height:22px;}
-
-  /* ---------- Nav ---------- */
-  header{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(11,14,20,0.78);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{
-    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .logo{
-    font-family:var(--mono); font-size:15px; font-weight:600;
-    letter-spacing:0.02em; color:var(--text);
-    display:flex; align-items:center; gap:10px;
-  }
-  .logo .dot{color:var(--accent);}
-  .nav-links{display:flex; gap:30px; font-family:var(--mono); font-size:13px; color:var(--text-dim);}
-  .nav-links a{position:relative; padding:4px 0; transition:color .2s;}
-  .nav-links a:hover{color:var(--text);}
-  .nav-links a::after{
-    content:""; position:absolute; left:0; bottom:0; height:1px; width:0;
-    background:var(--accent); transition:width .25s ease;
-  }
-  .nav-links a:hover::after{width:100%;}
-  .nav-cta{
-    font-family:var(--mono); font-size:13px;
-    background:linear-gradient(120deg, var(--accent), #22D3EE);
-    padding:8px 16px;
-    border-radius:30px; color:#0B0E14; font-weight:600; white-space:nowrap;
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .nav-cta:hover{transform:translateY(-1px); box-shadow:0 8px 20px -8px var(--accent);}
-  .menu-btn{display:none; background:none; border:none; color:var(--text); cursor:pointer;}
-
-  @media (max-width:840px){
-    .nav-links{display:none;}
-    .menu-btn{display:block;}
-  }
-
-  /* ---------- Hero ---------- */
-  .hero{
-    min-height:100vh;
-    display:flex; align-items:center;
-    padding:140px 0 80px;
-    position:relative;
-  }
-  .hero .wrap{
-    display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center;
-  }
-  .hero-copy h1{
-    font-size:clamp(34px,5vw,58px);
-    line-height:1.06; margin:18px 0 20px;
-  }
-  .hero-copy h1 .grad{
-    background:linear-gradient(95deg, #8B5CF6, #22D3EE 45%, #F472B6 80%);
-    background-clip:text; -webkit-background-clip:text; color:transparent;
-  }
-  .hero-copy p.pitch{
-    color:var(--text-dim); font-size:17px; max-width:520px; margin-bottom:32px;
-  }
-  .hero-tags{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px;}
-  .hero-tags span{
-    font-family:var(--mono); font-size:12px; color:var(--text-dim);
-    border:1px solid var(--line-strong); padding:6px 12px; border-radius:30px;
-  }
-  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
-  .btn{
-    font-family:var(--mono); font-size:13.5px; padding:13px 22px;
-    border-radius:30px; display:inline-flex; align-items:center; gap:8px;
-    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-  }
-  .btn-primary{background:linear-gradient(120deg, var(--accent), #22D3EE); color:#0B0E14; font-weight:600;}
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 28px -10px var(--accent);}
-  .btn-outline{border:1px solid var(--line-strong); color:var(--text);}
-  .btn-outline:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-2px);}
-
-  .hero-visual{position:relative;}
-  .viewfinder{
-    aspect-ratio:1/1.05;
-    border:1px solid var(--line);
-    background:linear-gradient(160deg, var(--bg-soft), var(--bg-card));
-    position:relative;
-    overflow:hidden;
-    border-radius:10px;
-  }
-  .viewfinder::before{
-    content:""; position:absolute; inset:0;
-    background:radial-gradient(circle at 30% 20%, rgba(139,92,246,0.25), transparent 60%),
-               radial-gradient(circle at 80% 85%, rgba(34,211,238,0.2), transparent 55%);
-    pointer-events:none;
-  }
-  .viewfinder .avatar{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    font-family:var(--display); font-size:96px; font-weight:700;
-    background:linear-gradient(160deg, #8B5CF6, #22D3EE);
-    background-clip:text; -webkit-background-clip:text; color:transparent;
-    letter-spacing:0.02em;
-  }
-  .viewfinder .scanline{
-    position:absolute; left:0; right:0; height:2px;
-    background:linear-gradient(90deg, transparent, var(--accent), #22D3EE, transparent);
-    opacity:0.7;
-    animation:scan 4.5s ease-in-out infinite;
-  }
-  @keyframes scan{
-    0%,100%{ top:6%; opacity:0; }
-    8%{ opacity:.8; }
-    50%{ top:92%; opacity:.6; }
-    92%{opacity:0;}
-  }
-  .tag-callout{
-    position:absolute;
-    font-family:var(--mono); font-size:11.5px;
-    background:var(--bg); border:1px solid var(--accent);
-    color:var(--accent); padding:6px 10px; border-radius:30px;
-    white-space:nowrap;
-  }
-  .tag-callout.t1{top:8%; right:-14px;}
-  .tag-callout.t2{bottom:10%; left:-18px; border-color:var(--accent-2); color:var(--accent-2);}
-  .tick-row{
-    position:absolute; bottom:-26px; left:0; right:0;
-    display:flex; justify-content:space-between;
-    font-family:var(--mono); font-size:10px; color:var(--text-faint);
-  }
-
-  @media (max-width:900px){
-    .hero .wrap{grid-template-columns:1fr; gap:50px;}
-    .hero{padding-top:120px;}
-    .hero-visual{max-width:320px; margin:0 auto;}
-  }
-
-  /* ---------- Section shells ---------- */
-  section{padding:120px 0; border-bottom:1px solid var(--line); position:relative;}
-  .section-head{margin-bottom:56px; max-width:620px;}
-  .section-head h2{font-size:clamp(26px,3.4vw,38px); margin-top:14px;}
-  .section-head p{color:var(--text-dim); margin-top:14px; font-size:15.5px;}
-
-  .reveal{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
-
-  /* ---------- About ---------- */
-  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:60px;}
-  .about-grid p{color:var(--text-dim); font-size:16px; margin-bottom:18px;}
-  .facts{border:1px solid var(--line); border-radius:8px; overflow:hidden;}
-  .fact-row{
-    display:flex; justify-content:space-between; gap:14px;
-    padding:16px 20px; border-bottom:1px solid var(--line);
-    font-size:14px;
-  }
-  .fact-row:last-child{border-bottom:none;}
-  .fact-row .k{font-family:var(--mono); color:var(--text-faint); font-size:12px; text-transform:uppercase; letter-spacing:.05em;}
-  .fact-row .v{color:var(--text); text-align:right;}
-  @media (max-width:840px){.about-grid{grid-template-columns:1fr;}}
-
-  /* ---------- Experience: log timeline ---------- */
-  .timeline{border-left:2px solid var(--line-strong); margin-left:8px;}
-  .tl-item{position:relative; padding:0 0 56px 36px;}
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{
-    content:""; position:absolute; left:-7px; top:4px;
-    width:11px; height:11px; border-radius:50%;
-    background:var(--accent); box-shadow:0 0 0 4px var(--accent-soft);
-  }
-  .tl-date{font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:.04em;}
-  .tl-role{font-size:21px; margin:8px 0 2px;}
-  .tl-meta{color:var(--text-faint); font-size:13.5px; margin-bottom:14px;}
-  .tl-item ul{display:flex; flex-direction:column; gap:8px;}
-  .tl-item li{color:var(--text-dim); font-size:15px; padding-left:18px; position:relative;}
-  .tl-item li::before{content:"—"; position:absolute; left:0; color:var(--text-faint);}
-
-  /* ---------- Skills ---------- */
-  .skills-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:48px 50px;}
-  @media (max-width:1020px){.skills-grid{grid-template-columns:1fr 1fr;}}
-  .skill-cat{border:1px solid var(--line); border-radius:10px; padding:24px; background:linear-gradient(160deg, var(--bg-soft), var(--bg-card));}
-  .skill-cat h3{font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin-bottom:20px; font-weight:600;}
-  .skill{margin-bottom:16px;}
-  .skill-top{display:flex; justify-content:space-between; font-size:14.5px; margin-bottom:7px;}
-  .skill-top .pct{font-family:var(--mono); font-size:12px; color:var(--text-faint);}
-  .bar{height:6px; background:var(--bg); border:1px solid var(--line); border-radius:6px; overflow:hidden;}
-  .bar-fill{height:100%; width:0%; background:linear-gradient(90deg, var(--accent), var(--accent-2)); transition:width 1.1s cubic-bezier(.2,.8,.2,1); border-radius:6px;}
-  @media (max-width:680px){.skills-grid{grid-template-columns:1fr;}}
-
-  /* ---------- Projects ---------- */
-  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
-  .proj-card{
-    background:linear-gradient(160deg, var(--bg-soft), var(--bg-card)); border:1px solid var(--line);
-    padding:28px; border-radius:10px;
-    display:flex; flex-direction:column; gap:14px;
-    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-  }
-  .proj-card:hover{transform:translateY(-4px); border-color:var(--accent); box-shadow:0 16px 36px -20px var(--accent);}
-  .proj-label{font-family:var(--mono); font-size:11px; color:var(--accent-2); letter-spacing:.06em;}
-  .proj-card h3{font-size:20px;}
-  .proj-card p{color:var(--text-dim); font-size:14.5px; flex-grow:1;}
-  .proj-tags{display:flex; flex-wrap:wrap; gap:8px;}
-  .proj-tags span{font-family:var(--mono); font-size:11px; color:var(--text-dim); border:1px solid var(--line); padding:4px 9px; border-radius:30px;}
-  .proj-link{font-family:var(--mono); font-size:13px; color:var(--accent); display:inline-flex; align-items:center; gap:6px;}
-  .proj-link:hover{text-decoration:underline;}
-  @media (max-width:780px){.proj-grid{grid-template-columns:1fr;}}
-
-  /* ---------- Education / Certs ---------- */
-  .edu-cert{display:grid; grid-template-columns:1fr 1.4fr; gap:60px;}
-  .edu-card{border:1px solid var(--line); border-radius:10px; padding:26px; background:linear-gradient(160deg, var(--bg-soft), var(--bg-card));}
-  .edu-card .tl-date{display:block; margin-bottom:10px;}
-  .edu-card h3{font-size:19px; margin-bottom:4px;}
-  .edu-card .tl-meta{margin-bottom:0;}
-  .cert-list{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
-  .cert-item{
-    border:1px solid var(--line); border-radius:8px; padding:16px 18px;
-    font-size:13.5px; display:flex; flex-direction:column; gap:4px;
-    transition:border-color .2s;
-  }
-  .cert-item:hover{border-color:var(--accent);}
-  .cert-item .cname{color:var(--text);}
-  .cert-item .cmeta{font-family:var(--mono); font-size:11.5px; color:var(--text-faint);}
-  @media (max-width:840px){.edu-cert{grid-template-columns:1fr;} .cert-list{grid-template-columns:1fr;}}
-
-  /* ---------- Publications: floating paper card ---------- */
-  .pub-wrap{display:flex; justify-content:center; perspective:1000px;}
-  .pub-card{
-    position:relative;
-    width:min(560px, 100%);
-    background:linear-gradient(155deg, var(--bg-card), var(--bg-soft));
-    border:1px solid var(--line-strong);
-    border-radius:12px;
-    padding:36px 38px;
-    animation:float 6s ease-in-out infinite;
-    box-shadow:0 30px 60px -30px var(--accent);
-  }
-  @keyframes float{
-    0%,100%{ transform:translateY(0px) rotate(-0.4deg); }
-    50%{ transform:translateY(-14px) rotate(0.4deg); }
-  }
-  .pub-card .corner{border-color:var(--accent-2);}
-  .pub-badge{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--mono); font-size:11px; letter-spacing:.06em;
-    color:var(--accent-2); border:1px solid var(--accent-2); border-radius:30px;
-    padding:5px 14px; margin-bottom:18px;
-  }
-  .pub-badge::before{content:"●"; font-size:8px;}
-  .pub-card h3{font-size:23px; margin-bottom:10px; line-height:1.25;}
-  .pub-meta{font-family:var(--mono); font-size:12.5px; color:var(--text-faint); margin-bottom:16px;}
-  .pub-card p{color:var(--text-dim); font-size:14.5px; margin-bottom:22px;}
-  .pub-link{
-    font-family:var(--mono); font-size:13px; color:var(--accent);
-    display:inline-flex; align-items:center; gap:7px;
-    border-top:1px solid var(--line); padding-top:16px; width:100%;
-  }
-  .pub-link:hover{text-decoration:underline;}
-  @media (max-width:600px){.pub-card{padding:28px 24px;}}
-
-  /* ---------- Contact ---------- */
-  .contact{border-bottom:none;}
-  .contact-box{
-    border:1px solid var(--line); border-radius:14px; padding:56px;
-    display:grid; grid-template-columns:1.2fr 1fr; gap:50px; align-items:center;
-    position:relative; overflow:hidden;
-    background:linear-gradient(150deg, var(--bg-soft), var(--bg-card));
-  }
-  .contact-box::before{
-    content:""; position:absolute; inset:0;
-    background:radial-gradient(circle at 90% 10%, rgba(244,114,182,0.15), transparent 55%),
-               radial-gradient(circle at 5% 95%, rgba(34,211,238,0.15), transparent 55%);
-    pointer-events:none;
-  }
-  .contact-box h2{font-size:clamp(26px,3.6vw,36px); margin-bottom:14px;}
-  .contact-box p{color:var(--text-dim); font-size:15.5px; max-width:440px;}
-  .contact-links{display:flex; flex-direction:column; gap:14px; position:relative;}
-  .contact-link{
-    display:flex; align-items:center; justify-content:space-between;
-    border:1px solid var(--line); border-radius:10px; padding:14px 18px;
-    font-family:var(--mono); font-size:13.5px; transition:border-color .2s, background .2s;
-    background:rgba(255,255,255,0.02);
-  }
-  .contact-link:hover{border-color:var(--accent); background:var(--accent-soft);}
-  .contact-link .k{color:var(--text-faint); font-size:11px; text-transform:uppercase; letter-spacing:.05em;}
-  @media (max-width:840px){.contact-box{grid-template-columns:1fr; padding:36px;}}
-
-  /* ---------- Scroll progress bar ---------- */
-  .scroll-progress{
-    position:fixed; top:0; left:0; height:3px; width:0%;
-    background:linear-gradient(90deg, #8B5CF6, #22D3EE, #F472B6, #FBBF24);
-    z-index:200; transition:width .1s linear;
-  }
-
-  /* ---------- Hero 3D canvas ---------- */
-  #hero3d{position:absolute; inset:0; z-index:0; opacity:0.8; pointer-events:none;}
-  .hero{z-index:1;}
-  .hero .wrap{position:relative; z-index:2;}
-
-  /* ---------- Generative SVG decoration ---------- */
-  .deco-svg{position:absolute; pointer-events:none; opacity:0.35; z-index:0;}
-
-  /* ---------- 3D skill chart ---------- */
-  .chart3d-wrap{
-    margin-top:42px; border:1px solid var(--line); border-radius:14px;
-    background:linear-gradient(160deg, var(--bg-soft), var(--bg-card));
-    padding:18px; position:relative; overflow:hidden;
-  }
-  #skills3d{width:100%; height:380px; display:block; cursor:grab; touch-action:none;}
-  #skills3d:active{cursor:grabbing;}
-  .chart3d-caption{
-    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center;
-    gap:14px; padding:14px 6px 4px; font-family:var(--mono); font-size:12px; color:var(--text-faint);
-  }
-  .chart3d-legend{display:flex; gap:16px; flex-wrap:wrap;}
-  .chart3d-legend span{display:inline-flex; align-items:center; gap:6px;}
-  .chart3d-legend i{width:9px; height:9px; border-radius:2px; display:inline-block;}
-
-  /* ---------- 3D tech tag cloud (CSS-only) ---------- */
-  .tagcloud-wrap{
-    margin-top:50px; height:300px; display:flex; align-items:center; justify-content:center;
-    perspective:900px; position:relative;
-  }
-  .tagcloud{
-    position:relative; width:1px; height:1px;
-    transform-style:preserve-3d;
-    animation:spinY 26s linear infinite;
-  }
-  .tagcloud:hover{animation-play-state:paused;}
-  @keyframes spinY{ from{transform:rotateY(0deg);} to{transform:rotateY(360deg);} }
-  .tag3d{
-    position:absolute; top:0; left:0;
-    transform-style:preserve-3d;
-    font-family:var(--mono); font-size:13px; white-space:nowrap;
-    background:var(--bg-card); border:1px solid var(--line-strong);
-    color:var(--text); padding:8px 16px; border-radius:30px;
-    backface-visibility:visible;
-  }
-  .tagcloud-hint{text-align:center; font-family:var(--mono); font-size:11.5px; color:var(--text-faint); margin-top:10px;}
-
-  footer{padding:34px 0; text-align:center; font-family:var(--mono); font-size:12px; color:var(--text-faint);}
-</style>
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
+  <!-- Ambient Glows -->
+  <div class="mesh-glows" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
-<div class="mesh-bg" aria-hidden="true">
-  <span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span>
-</div>
+  <!-- Floating Navigation Bar -->
+  <header>
+    <div class="nav-inner">
+      <a href="#home" class="logo-brand">
+        <div class="avatar-chip">ES</div>
+        <span>Eswar Gudimetla</span>
+        <span class="title-tag">AI.cv</span>
+      </a>
 
-<header>
-  <nav>
-    <div class="logo">ESG<span class="dot">.</span><span class="mono" style="color:var(--text-faint); font-size:12px;">ai-engineer</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#publications">Publications</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Get in touch</a>
-  </nav>
-</header>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#publications">Publications</a></li>
+      </ul>
 
-<main>
+      <div class="nav-actions">
+        <button class="cmd-trigger" onclick="toggleCmdPalette()" title="Open Command Palette (Cmd+K)">
+          <i data-lucide="search"></i>
+          <span>Search</span>
+          <kbd>⌘K</kbd>
+        </button>
 
-  <!-- HERO -->
-  <section class="hero" id="home" style="border-bottom:1px solid var(--line); padding-bottom:80px;">
-    <canvas id="hero3d"></canvas>
-    <div class="wrap">
-      <div class="hero-copy">
-        <span class="eyebrow">SOFTWARE_ENGINEER.detect(AI=true) — confidence 99.2%</span>
-        <h1>Eswar Sai Chandra Reddy <span class="grad">Gudimetla</span></h1>
-        <p class="pitch">I build systems that see, learn, and decide. Computer Science graduate (M.S., Saint Louis University) and AI Engineer with hands-on roots in computer vision, applied ML, cloud, and full-stack engineering. Open to full-time roles across the USA.</p>
-        <div class="hero-tags">
-          <span>AI / ML</span>
-          <span>Computer Vision</span>
-          <span>AWS · Docker · Kubernetes</span>
-          <span>Python · SQL · TensorFlow</span>
-        </div>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View Projects →</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
-        </div>
-      </div>
+        <a href="#contact" class="btn btn-primary btn-sm">Get in touch</a>
 
-      <div class="hero-visual">
-        <div class="viewfinder frame">
-          <span class="corner tl"></span><span class="corner tr"></span>
-          <span class="corner bl"></span><span class="corner br"></span>
-          <div class="avatar">ES</div>
-          <div class="scanline"></div>
-          <div class="tag-callout t1">role: Software Engineer with AI</div>
-          <div class="tag-callout t2">location: USA</div>
-        </div>
-        <div class="tick-row"><span>00</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+        <button class="mobile-toggle" onclick="toggleCmdPalette()" aria-label="Open Menu">
+          <i data-lucide="menu"></i>
+        </button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ABOUT -->
-  <section id="about" style="--accent:#22D3EE; --accent-2:#8B5CF6;">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">01 — About</span>
-        <h2>Trained on curiosity, deployed in production.</h2>
-      </div>
-      <div class="about-grid">
-        <div class="reveal">
-          <p>I'm a Computer Science graduate (M.S., Saint Louis University) and AI Engineer who got here through computer vision — teaching machines to track a hand, read a gesture, recognize a pattern — and stayed for the broader problem of building software systems people can actually rely on, from ML models to full-stack apps and cloud infrastructure.</p>
-          <p>I currently work at Rebecca Everlene Trust Company, building AI-driven systems for financial and trust-services workflows. Before that, I was a Research Assistant at GITAM Deemed University, where I worked on applied deep learning and computer vision research, and a Cloud & DevOps Intern at Phoenix Global, where I learned how models actually get from a notebook into the world.</p>
-          <p>I hold an M.S. in Computer Science from Saint Louis University, and I'm always happiest at the intersection of research and shipped code.</p>
-        </div>
-        <div class="facts reveal">
-          <div class="fact-row"><span class="k">Based in</span><span class="v">USA</span></div>
-          <div class="fact-row"><span class="k">Current role</span><span class="v">AI Engineer, Rebecca Everlene Trust Co.</span></div>
-          <div class="fact-row"><span class="k">Education</span><span class="v">M.S. Computer Science, SLU</span></div>
-          <div class="fact-row"><span class="k">Focus</span><span class="v">AI/ML · Computer Vision · Cloud</span></div>
-          <div class="fact-row"><span class="k">Certifications</span><span class="v">10, incl. Deep Learning in CV</span></div>
-          <div class="fact-row"><span class="k">Status</span><span class="v">Open to full-time roles (USA)</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <main class="container">
 
-  <!-- EXPERIENCE -->
-  <section id="experience" style="--accent:#8B5CF6; --accent-2:#22D3EE;">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">02 — Experience</span>
-        <h2>Where the models met the real world.</h2>
-      </div>
-      <div class="timeline">
-        <div class="tl-item reveal">
-          <div class="tl-date">FEB 2026 — PRESENT</div>
-          <h3 class="tl-role">AI Engineer</h3>
-          <div class="tl-meta">Rebecca Everlene Trust Company · Chicago, USA</div>
-          <ul>
-            <li>Design and build AI-driven systems supporting trust and financial-services workflows.</li>
-            <li>Work across the ML lifecycle — data pipelines, model development, evaluation, and production deployment.</li>
-          </ul>
-        </div>
-        <div class="tl-item reveal">
-          <div class="tl-date">SEP 2022 — MAY 2023</div>
-          <h3 class="tl-role">Research Assistant</h3>
-          <div class="tl-meta">GITAM Deemed University · Visakhapatnam, India</div>
-          <ul>
-            <li>Conducted applied research in computer vision and deep learning under faculty supervision.</li>
-            <li>Ran model experiments, reviewed literature, and documented findings for ongoing research projects.</li>
-          </ul>
-        </div>
-        <div class="tl-item reveal">
-          <div class="tl-date">MAY 2022 — JUL 2022</div>
-          <h3 class="tl-role">Cloud & DevOps Intern</h3>
-          <div class="tl-meta">Phoenix Global · Hyderabad, India</div>
-          <ul>
-            <li>Supported cloud infrastructure setup and CI/CD pipelines for application deployments.</li>
-            <li>Gained hands-on experience with cloud-native tooling to streamline build and release workflows.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+      <canvas id="heroCanvas"></canvas>
 
-  <!-- SKILLS -->
-  <section id="skills" style="--accent:#F472B6; --accent-2:#FBBF24;">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">03 — Skills</span>
-        <h2>Detected proficiencies.</h2>
-        <p>Self-assessed confidence scores — same metaphor a vision model would use to label what it sees.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-cat reveal">
-          <h3>AI / Machine Learning</h3>
-          <div class="skill" data-pct="93"><div class="skill-top"><span>Python</span><span class="pct">93%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-          <div class="skill" data-pct="88"><div class="skill-top"><span>Computer Vision (OpenCV, MediaPipe)</span><span class="pct">88%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-          <div class="skill" data-pct="85"><div class="skill-top"><span>Deep Learning (TensorFlow / Keras)</span><span class="pct">85%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-          <div class="skill" data-pct="74"><div class="skill-top"><span>NLP fundamentals</span><span class="pct">74%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-        </div>
-        <div class="skill-cat reveal">
-          <h3>Cloud & Data</h3>
-          <div class="skill" data-pct="82"><div class="skill-top"><span>AWS</span><span class="pct">82%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-          <div class="skill" data-pct="80"><div class="skill-top"><span>SQL & Data Analytics</span><span class="pct">80%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-          <div class="skill" data-pct="76"><div class="skill-top"><span>Docker</span><span class="pct">76%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-          <div class="skill" data-pct="70"><div class="skill-top"><span>Kubernetes</span><span class="pct">70%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-        </div>
-        <div class="skill-cat reveal">
-          <h3>Engineering & Web</h3>
-          <div class="skill" data-pct="82"><div class="skill-top"><span>Data Structures & Algorithms</span><span class="pct">82%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-          <div class="skill" data-pct="78"><div class="skill-top"><span>Git & CI/CD</span><span class="pct">78%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-          <div class="skill" data-pct="75"><div class="skill-top"><span>Object-Oriented Design</span><span class="pct">75%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-          <div class="skill" data-pct="72"><div class="skill-top"><span>JavaScript / Web Development</span><span class="pct">72%</span></div><div class="bar"><div class="bar-fill"></div></div></div>
-        </div>
-      </div>
+      <div class="hero-grid">
+        <!-- Hero Main Bento Card -->
+        <div class="bento-card hero-main-card">
+          <div class="hero-header">
+            <div class="status-badge">
+              <i></i>
+              <span>Available for AI / ML & Software Engineering Roles (USA)</span>
+            </div>
 
-      <div class="chart3d-wrap reveal">
-        <canvas id="skills3d"></canvas>
-        <div class="chart3d-caption">
-          <span>Drag to rotate · scores rendered as 3D bars</span>
-          <div class="chart3d-legend">
-            <span><i style="background:#8B5CF6;"></i>AI / ML</span>
-            <span><i style="background:#FBBF24;"></i>Cloud & Data</span>
-            <span><i style="background:#F472B6;"></i>Engineering & Web</span>
+            <h1 class="hero-title">
+              Eswar Sai Chandra Reddy <br>
+              <span class="grad-text">Gudimetla</span>
+            </h1>
+
+            <p class="hero-bio">
+              AI Engineer & Computer Vision Specialist. M.S. in Computer Science graduate from <strong>Saint Louis University</strong>. I build intelligent real-time systems that see, learn, and scale — from deep learning models to containerized cloud infrastructure.
+            </p>
+
+            <div class="hero-tags-row">
+              <span class="tech-chip">Computer Vision</span>
+              <span class="tech-chip">Deep Learning</span>
+              <span class="tech-chip">AWS · Docker · K8s</span>
+              <span class="tech-chip">Python · SQL · PyTorch</span>
+            </div>
+          </div>
+
+          <div class="hero-actions-row">
+            <a href="#projects" class="btn btn-primary">
+              <span>View Featured Projects</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i data-lucide="mail"></i>
+              <span>Contact Me</span>
+            </a>
+            <button onclick="triggerConfetti()" class="btn btn-secondary" title="Celebrate">
+              <i data-lucide="sparkles"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Computer Vision Real-Time Interactive Simulator Widget -->
+        <div class="bento-card cv-widget-card">
+          <div class="cv-widget-header">
+            <div class="cv-widget-title">
+              <i data-lucide="eye" style="color:var(--accent-secondary)"></i>
+              <span>MODEL_INSPECTOR v2.6</span>
+            </div>
+
+            <div class="cv-mode-selector">
+              <button class="cv-mode-btn active" data-mode="gesture">Gesture</button>
+              <button class="cv-mode-btn" data-mode="parking">Parking CV</button>
+              <button class="cv-mode-btn" data-mode="thermal">Heatmap</button>
+            </div>
+          </div>
+
+          <div class="cv-viewport">
+            <canvas id="cvCanvas"></canvas>
+
+            <div class="cv-hud-overlay">
+              <div class="hud-top">
+                <span>MODE: <strong id="cvCurrentModeText">HAND_GESTURE_TRACKER</strong></span>
+                <span>FPS: <strong>60.0</strong></span>
+              </div>
+
+              <div class="hud-reticle"></div>
+
+              <div class="hud-bottom">
+                <span>CONFIDENCE: <strong style="color:var(--accent-success)">99.2%</strong></span>
+                <span>LATENCY: <strong>4.2ms</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-controls-footer">
+            <span>Live Interactive CV Detection Sandbox</span>
+            <span style="color:var(--accent-primary)">● RECORDING_STREAM</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" style="--accent:#FBBF24; --accent-2:#FB7185;">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">04 — Projects</span>
-        <h2>Things I've shipped and broken on purpose.</h2>
-      </div>
-      <div class="proj-grid">
-
-        <div class="proj-card frame reveal">
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          <span class="proj-label">[ COMPUTER VISION ]</span>
-          <h3>Hand Gesture-Controlled Cursor System</h3>
-          <p>A real-time system that tracks hand landmarks via webcam and translates gestures into cursor movement and clicks — no mouse required.</p>
-          <div class="proj-tags"><span>Python</span><span>OpenCV</span><span>MediaPipe</span></div>
-          <a class="proj-link" href="https://github.com/Eswargudimetla/cursor-movement-with-hand-gestures" target="_blank" rel="noopener">View on GitHub →</a>
+      <!-- KEY METRICS BAR -->
+      <div class="metrics-row">
+        <div class="bento-card metric-card">
+          <span class="metric-num">M.S.</span>
+          <span class="metric-label">Computer Science (SLU)</span>
         </div>
-
-        <div class="proj-card frame reveal">
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          <span class="proj-label">[ COMPUTER VISION ]</span>
-          <h3>Parking Space Detection System</h3>
-          <p>A vision-based system that detects open vs. occupied parking spaces from camera footage in real time, built on classic CV detection techniques.</p>
-          <div class="proj-tags"><span>Python</span><span>OpenCV</span><span>Object Detection</span></div>
-          <a class="proj-link" href="https://github.com/Eswargudimetla/Car-parking-lot-" target="_blank" rel="noopener">View on GitHub →</a>
+        <div class="bento-card metric-card">
+          <span class="metric-num">10</span>
+          <span class="metric-label">Certs (DL, AI, Cloud)</span>
         </div>
-
-        <div class="proj-card frame reveal">
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          <span class="proj-label">[ MACHINE LEARNING ]</span>
-          <h3>Stock Market Prediction</h3>
-          <p>A time-series forecasting model that predicts stock price trends from historical market data, comparing classical and ML-based approaches.</p>
-          <div class="proj-tags"><span>Python</span><span>Time Series</span><span>Machine Learning</span></div>
-          <a class="proj-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">More on GitHub →</a>
+        <div class="bento-card metric-card">
+          <span class="metric-num">7+</span>
+          <span class="metric-label">Shipped AI & Web Apps</span>
         </div>
-
-        <div class="proj-card frame reveal">
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          <span class="proj-label">[ DATA ANALYTICS ]</span>
-          <h3>Sales Data Analysis & Dashboard</h3>
-          <p>An end-to-end sales analysis project — cleaning raw data, querying with SQL, and visualizing trends in an interactive dashboard.</p>
-          <div class="proj-tags"><span>SQL</span><span>Data Analysis</span><span>Dashboard</span></div>
-          <a class="proj-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">More on GitHub →</a>
+        <div class="bento-card metric-card">
+          <span class="metric-num">1</span>
+          <span class="metric-label">Peer-Reviewed Paper</span>
         </div>
-
-        <div class="proj-card frame reveal">
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          <span class="proj-label">[ WEB APPLICATION ]</span>
-          <h3>DriveLink – Car Rental Platform</h3>
-          <p>A full-stack car rental platform handling listings, bookings, and availability — built end-to-end as a real-world product simulation.</p>
-          <div class="proj-tags"><span>JavaScript</span><span>Full-Stack</span><span>Web App</span></div>
-          <a class="proj-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">More on GitHub →</a>
-        </div>
-
-        <div class="proj-card frame reveal">
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          <span class="proj-label">[ WEB APPLICATION ]</span>
-          <h3>SLU Insta</h3>
-          <p>An Instagram-inspired social platform built for the Saint Louis University community — feeds, posts, and profiles in a focused web app.</p>
-          <div class="proj-tags"><span>JavaScript</span><span>Frontend</span><span>Web App</span></div>
-          <a class="proj-link" href="https://github.com/Eswargudimetla/slu-insta" target="_blank" rel="noopener">View on GitHub →</a>
-        </div>
-
-        <div class="proj-card frame reveal">
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          <span class="proj-label">[ PRODUCTIVITY ]</span>
-          <h3>Gym Reminder Mobile Application</h3>
-          <p>A lightweight scheduling app that nudges users to stay consistent with workouts, built around simple, reliable reminder logic.</p>
-          <div class="proj-tags"><span>JavaScript</span><span>Mobile</span><span>Scheduling</span></div>
-          <a class="proj-link" href="https://github.com/Eswargudimetla/gym-reminder-app" target="_blank" rel="noopener">View on GitHub →</a>
-        </div>
-
-      </div>
-
-      <div class="tagcloud-wrap reveal">
-        <div class="tagcloud" id="tagCloud"></div>
-      </div>
-      <div class="tagcloud-hint">Tech stack across all projects · hover to pause</div>
-    </div>
-  </section>
-
-  <!-- EDUCATION & CERTS -->
-  <section id="education" style="--accent:#34D399; --accent-2:#22D3EE;">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">05 — Education & Certifications</span>
-        <h2>The training data.</h2>
-      </div>
-      <div class="edu-cert">
-        <div class="edu-card reveal">
-          <span class="tl-date mono">JAN 2024 — DEC 2025</span>
-          <h3>M.S. in Computer Science</h3>
-          <div class="tl-meta">Saint Louis University</div>
-        </div>
-        <div class="cert-list reveal">
-          <div class="cert-item"><span class="cname">Deep Learning in Computer Vision</span><span class="cmeta">HSE University · 2020</span></div>
-          <div class="cert-item"><span class="cname">Data Structures</span><span class="cmeta">UC San Diego · 2020</span></div>
-          <div class="cert-item"><span class="cname">Introduction to Artificial Intelligence</span><span class="cmeta">IBM · 2020</span></div>
-          <div class="cert-item"><span class="cname">TensorFlow for CNNs</span><span class="cmeta">Guided Project · 2020</span></div>
-          <div class="cert-item"><span class="cname">Image Classification with CNNs (Keras)</span><span class="cmeta">Guided Project · 2020</span></div>
-          <div class="cert-item"><span class="cname">Object-Oriented Design</span><span class="cmeta">University of Alberta · 2021</span></div>
-          <div class="cert-item"><span class="cname">Database Management Essentials</span><span class="cmeta">University of Colorado System · 2021</span></div>
-          <div class="cert-item"><span class="cname">Agile Software Development</span><span class="cmeta">University of Minnesota · 2022</span></div>
-          <div class="cert-item"><span class="cname">Cloud Computing Basics</span><span class="cmeta">LearnQuest · 2022</span></div>
-          <div class="cert-item"><span class="cname">Cloud Computing Foundations</span><span class="cmeta">Duke University · 2022</span></div>
+        <div class="bento-card metric-card">
+          <span class="metric-num">USA</span>
+          <span class="metric-label">Location / Open Roles</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PUBLICATIONS -->
-  <section id="publications" style="--accent:#FB7185; --accent-2:#FBBF24;">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">06 — Publications</span>
-        <h2>Research, peer-reviewed.</h2>
-      </div>
-      <div class="pub-wrap reveal">
-        <div class="pub-card frame">
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          <span class="pub-badge">Published · May 2023</span>
-          <h3>Contactless Menu Ordering System</h3>
-          <div class="pub-meta">Journal of Emerging Technologies and Innovative Research (JETIR)</div>
-          <p>A peer-reviewed paper presenting a contactless ordering system for restaurants — letting customers browse menus, place orders, and pay from their own devices without physical contact.</p>
-          <a class="pub-link" href="https://www.jetir.org/view" target="_blank" rel="noopener">Read the paper on JETIR →</a>
+    <!-- INTERACTIVE CLI TERMINAL SECTION -->
+    <section class="terminal-section">
+      <div class="bento-card terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+          <span class="terminal-title">eswar@ai-workstation:~ (interactive_cli)</span>
+          <i data-lucide="terminal" style="color:var(--text-muted); width:16px;"></i>
+        </div>
+
+        <div class="terminal-body" id="termBody">
+          <div class="term-line">
+            Welcome to Eswar's Interactive Portfolio Shell. Type <span style="color:var(--accent-primary)">'help'</span> or click preset commands below to inspect profile details.
+          </div>
+        </div>
+
+        <div class="terminal-input-row">
+          <span>$</span>
+          <input type="text" class="terminal-input" id="termInput" placeholder="Type command here (e.g. bio, skills, projects, hire)..." autocomplete="off">
+        </div>
+
+        <div class="term-preset-btns">
+          <button class="term-preset-btn" onclick="runTermCmd('bio')">$ bio</button>
+          <button class="term-preset-btn" onclick="runTermCmd('skills')">$ skills</button>
+          <button class="term-preset-btn" onclick="runTermCmd('projects')">$ projects</button>
+          <button class="term-preset-btn" onclick="runTermCmd('experience')">$ experience</button>
+          <button class="term-preset-btn" onclick="runTermCmd('hire')">$ hire</button>
+          <button class="term-preset-btn" onclick="runTermCmd('clear')">$ clear</button>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact" style="--accent:#60A5FA; --accent-2:#8B5CF6;">
-    <div class="wrap">
-      <div class="contact-box reveal">
+    <!-- ABOUT SECTION -->
+    <section class="section-padding" id="about">
+      <div class="section-head">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>01 — About Me</span>
+        </div>
+        <h2>Engineered for intelligence, tested in production.</h2>
+        <p>A background rooted in applied computer vision, machine learning research, and full-stack cloud software deployment.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="bento-card about-narrative">
+          <p>
+            I am a Computer Science graduate (M.S., <strong>Saint Louis University</strong>) and AI Engineer currently building high-performance financial and trust-service automated workflows at <strong>Rebecca Everlene Trust Company</strong> in Chicago.
+          </p>
+          <p>
+            My engineering path started with computer vision — teaching algorithms to track human gesture landmarks in real time, classify objects, and parse visual sensor streams. Over time, I expanded into end-to-end software architecture, building data pipelines, training deep learning networks (TensorFlow / Keras / PyTorch), containerizing workflows (Docker / Kubernetes), and deploying resilient RESTful web applications.
+          </p>
+          <p>
+            Previously, as a Research Assistant at <strong>GITAM Deemed University</strong>, I authored peer-reviewed computer vision research published in <em>JETIR</em>. As a Cloud & DevOps Intern at <strong>Phoenix Global</strong>, I mastered CI/CD deployment pipelines on AWS.
+          </p>
+        </div>
+
+        <div class="bento-card facts-table">
+          <div class="fact-item">
+            <span class="label">Location</span>
+            <span class="value">USA</span>
+          </div>
+          <div class="fact-item">
+            <span class="label">Current Role</span>
+            <span class="value">AI Engineer @ Rebecca Everlene Trust Co.</span>
+          </div>
+          <div class="fact-item">
+            <span class="label">Master's Degree</span>
+            <span class="value">M.S. Computer Science (SLU)</span>
+          </div>
+          <div class="fact-item">
+            <span class="label">Core Specialization</span>
+            <span class="value">Computer Vision · Applied ML · Cloud</span>
+          </div>
+          <div class="fact-item">
+            <span class="label">Certifications</span>
+            <span class="value">10 Certified (HSE, IBM, UCSD, Duke)</span>
+          </div>
+          <div class="fact-item">
+            <span class="label">Work Status</span>
+            <span class="value">Open for Full-Time Roles</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section-padding" id="projects">
+      <div class="section-head">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>02 — Featured Work</span>
+        </div>
+        <h2>Systems shipped and open-sourced.</h2>
+        <p>Explore real-time computer vision apps, predictive machine learning models, and full-stack web platforms.</p>
+      </div>
+
+      <div class="projects-filter-bar">
+        <button class="filter-btn active" data-filter="all">All Projects (7)</button>
+        <button class="filter-btn" data-filter="cv">Computer Vision & AI (3)</button>
+        <button class="filter-btn" data-filter="fullstack">Full-Stack & Web (3)</filter-btn>
+        <button class="filter-btn" data-filter="analytics">Data Analytics (1)</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="bento-card project-card" data-category="cv">
+          <div class="project-top">
+            <span class="project-category">[ COMPUTER VISION & AI ]</span>
+            <h3>Hand Gesture-Controlled Cursor System</h3>
+            <p>Real-time computer vision system that tracks hand landmarks via camera feeds and maps finger gestures into sub-millisecond cursor movements, clicks, and dragging without physical controllers.</p>
+            <div class="project-tags">
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">OpenCV</span>
+              <span class="tech-chip">MediaPipe</span>
+              <span class="tech-chip">Landmark Tracking</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <a class="project-link" href="https://github.com/Eswargudimetla/cursor-movement-with-hand-gestures" target="_blank" rel="noopener">
+              <span>View Repository</span>
+              <i data-lucide="external-link" style="width:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="bento-card project-card" data-category="cv">
+          <div class="project-top">
+            <span class="project-category">[ COMPUTER VISION ]</span>
+            <h3>Parking Space Detection System</h3>
+            <p>Automated vision monitoring system that processes video feeds to identify vacant versus occupied parking slots in real time using frame thresholding and bounding region classification.</p>
+            <div class="project-tags">
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">OpenCV</span>
+              <span class="tech-chip">Object Detection</span>
+              <span class="tech-chip">Image Processing</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <a class="project-link" href="https://github.com/Eswargudimetla/Car-parking-lot-" target="_blank" rel="noopener">
+              <span>View Repository</span>
+              <i data-lucide="external-link" style="width:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="bento-card project-card" data-category="cv">
+          <div class="project-top">
+            <span class="project-category">[ MACHINE LEARNING ]</span>
+            <h3>Stock Market Prediction Model</h3>
+            <p>Time-series machine learning model trained on historical market pricing and indicator data to predict trends, evaluating classical regression against deep neural network architectures.</p>
+            <div class="project-tags">
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">Pandas</span>
+              <span class="tech-chip">Scikit-Learn</span>
+              <span class="tech-chip">Time Series</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <a class="project-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">
+              <span>Explore GitHub</span>
+              <i data-lucide="external-link" style="width:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="bento-card project-card" data-category="analytics">
+          <div class="project-top">
+            <span class="project-category">[ DATA ANALYTICS & PIPELINES ]</span>
+            <h3>Sales Data Analytics & Dashboard</h3>
+            <p>Data processing pipeline cleaning raw sales transactions, running optimized SQL analytical queries, and outputting interactive trend visualizations and metric dashboards.</p>
+            <div class="project-tags">
+              <span class="tech-chip">SQL</span>
+              <span class="tech-chip">Data Analytics</span>
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">Dashboarding</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <a class="project-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">
+              <span>Explore GitHub</span>
+              <i data-lucide="external-link" style="width:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="bento-card project-card" data-category="fullstack">
+          <div class="project-top">
+            <span class="project-category">[ FULL-STACK WEB ]</span>
+            <h3>DriveLink – Car Rental Platform</h3>
+            <p>End-to-end full-stack web app supporting vehicle listings, real-time availability checks, online reservations, customer portal management, and administrator metric tracking.</p>
+            <div class="project-tags">
+              <span class="tech-chip">JavaScript</span>
+              <span class="tech-chip">Node.js</span>
+              <span class="tech-chip">Express</span>
+              <span class="tech-chip">Full-Stack</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <a class="project-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">
+              <span>Explore GitHub</span>
+              <i data-lucide="external-link" style="width:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="bento-card project-card" data-category="fullstack">
+          <div class="project-top">
+            <span class="project-category">[ COMMUNITY WEB APP ]</span>
+            <h3>SLU Insta Community Platform</h3>
+            <p>Community platform built for Saint Louis University students with image post sharing, user feeds, authentication, and responsive profile pages.</p>
+            <div class="project-tags">
+              <span class="tech-chip">JavaScript</span>
+              <span class="tech-chip">Frontend Web</span>
+              <span class="tech-chip">REST API</span>
+              <span class="tech-chip">UI/UX</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <a class="project-link" href="https://github.com/Eswargudimetla/slu-insta" target="_blank" rel="noopener">
+              <span>View Repository</span>
+              <i data-lucide="external-link" style="width:14px"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 7 -->
+        <div class="bento-card project-card" data-category="fullstack">
+          <div class="project-top">
+            <span class="project-category">[ MOBILE PRODUCTIVITY ]</span>
+            <h3>Gym Reminder Mobile App</h3>
+            <p>Lightweight mobile scheduling application issuing fitness reminders, workout log tracking, and custom notification triggers to foster habits.</p>
+            <div class="project-tags">
+              <span class="tech-chip">JavaScript</span>
+              <span class="tech-chip">Mobile Tech</span>
+              <span class="tech-chip">Notifications</span>
+            </div>
+          </div>
+          <div class="project-footer">
+            <a class="project-link" href="https://github.com/Eswargudimetla/gym-reminder-app" target="_blank" rel="noopener">
+              <span>View Repository</span>
+              <i data-lucide="external-link" style="width:14px"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section-padding" id="skills">
+      <div class="section-head">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>03 — Technical Arsenal</span>
+        </div>
+        <h2>Proficiencies & 3D Interactive Matrix.</h2>
+        <p>Quantitative breakdown across machine learning, computer vision, cloud infrastructure, and core software engineering.</p>
+      </div>
+
+      <div class="skills-layout">
+        <!-- AI & ML Card -->
+        <div class="bento-card skill-category-card">
+          <h3><i data-lucide="cpu"></i> AI & Machine Learning</h3>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">Python</span>
+              <span class="skill-pct">93%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:93%"></div></div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">Computer Vision (OpenCV, MediaPipe)</span>
+              <span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">Deep Learning (TensorFlow, Keras)</span>
+              <span class="skill-pct">85%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">NLP Fundamentals</span>
+              <span class="skill-pct">74%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:74%"></div></div>
+          </div>
+        </div>
+
+        <!-- Cloud & DevOps Card -->
+        <div class="bento-card skill-category-card">
+          <h3><i data-lucide="cloud"></i> Cloud & Infrastructure</h3>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">AWS</span>
+              <span class="skill-pct">82%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:82%"></div></div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">SQL & Data Processing</span>
+              <span class="skill-pct">80%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">Docker</span>
+              <span class="skill-pct">76%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:76%"></div></div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">Kubernetes</span>
+              <span class="skill-pct">70%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+          </div>
+        </div>
+
+        <!-- Software Engineering Card -->
+        <div class="bento-card skill-category-card">
+          <h3><i data-lucide="code"></i> Engineering & Full-Stack</h3>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">Data Structures & Algorithms</span>
+              <span class="skill-pct">82%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:82%"></div></div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">Git & CI/CD Pipelines</span>
+              <span class="skill-pct">78%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:78%"></div></div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">Object-Oriented Design</span>
+              <span class="skill-pct">75%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-info">
+              <span class="skill-name">JavaScript / Web Stack</span>
+              <span class="skill-pct">72%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" style="width:72%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Skill Bar Orbit Visualization -->
+      <div class="bento-card chart3d-card">
+        <canvas id="skills3dCanvas"></canvas>
+        <div class="chart3d-footer">
+          <span>Drag mouse to rotate 3D skill bars</span>
+          <span>● Purple: AI/ML | ● Blue: Cloud | ● Pink: Engineering</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="section-padding" id="experience">
+      <div class="section-head">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>04 — Career Path</span>
+        </div>
+        <h2>Where research met production code.</h2>
+        <p>Proven history across commercial AI development, university research labs, and DevOps cloud setups.</p>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Experience 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="bento-card timeline-card">
+            <span class="timeline-period">FEB 2026 — PRESENT</span>
+            <h3 class="timeline-role">AI Engineer</h3>
+            <div class="timeline-company">
+              <i data-lucide="building" style="width:16px; color:var(--accent-primary)"></i>
+              <span>Rebecca Everlene Trust Company · Chicago, IL, USA</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Architecting and building AI-driven automated financial and trust-service workflow tools.</li>
+              <li>Engineered full end-to-end ML production pipelines including data synthesis, model evaluation, and containerized cloud deployment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="bento-card timeline-card">
+            <span class="timeline-period">SEP 2022 — MAY 2023</span>
+            <h3 class="timeline-role">Research Assistant (Computer Vision & Deep Learning)</h3>
+            <div class="timeline-company">
+              <i data-lucide="graduation-cap" style="width:16px; color:var(--accent-primary)"></i>
+              <span>GITAM Deemed University · Visakhapatnam, India</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Conducted computer vision research focusing on CNN architectures and gesture recognition pipelines.</li>
+              <li>Published peer-reviewed findings in the Journal of Emerging Technologies and Innovative Research (JETIR).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="bento-card timeline-card">
+            <span class="timeline-period">MAY 2022 — JUL 2022</span>
+            <h3 class="timeline-role">Cloud & DevOps Intern</h3>
+            <div class="timeline-company">
+              <i data-lucide="cloud" style="width:16px; color:var(--accent-primary)"></i>
+              <span>Phoenix Global · Hyderabad, India</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Built automated cloud infrastructure provisioning scripts on AWS with Docker containerization.</li>
+              <li>Optimized CI/CD build deployment pipelines to improve integration frequency and uptime.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS -->
+    <section class="section-padding" id="education">
+      <div class="section-head">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>05 — Knowledge Base</span>
+        </div>
+        <h2>Education & Verified Certifications.</h2>
+        <p>M.S. in Computer Science alongside 10 specialized industry certifications.</p>
+      </div>
+
+      <div class="edu-cert-grid">
+        <!-- Education Card -->
+        <div class="bento-card">
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <span class="timeline-period">JAN 2024 — DEC 2025</span>
+            <h3 style="font-family:var(--font-heading); font-size:1.5rem; color:var(--text-main)">M.S. in Computer Science</h3>
+            <div style="display:flex; align-items:center; gap:8px; color:var(--accent-primary); font-family:var(--font-mono)">
+              <i data-lucide="award" style="width:18px"></i>
+              <span>Saint Louis University (SLU), USA</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-top:8px">
+              Advanced graduate coursework covering Deep Learning, Machine Learning Theory, Distributed Systems, Software Engineering Architecture, and Algorithms.
+            </p>
+          </div>
+        </div>
+
+        <!-- Certifications List -->
+        <div class="certs-grid">
+          <div class="cert-card">
+            <span class="cert-name">Deep Learning in Computer Vision</span>
+            <span class="cert-issuer">HSE University · 2020</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-name">Data Structures</span>
+            <span class="cert-issuer">UC San Diego · 2020</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-name">Intro to Artificial Intelligence</span>
+            <span class="cert-issuer">IBM · 2020</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-name">TensorFlow for CNNs</span>
+            <span class="cert-issuer">Guided Project · 2020</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-name">Image Classification with CNNs</span>
+            <span class="cert-issuer">Keras Project · 2020</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-name">Object-Oriented Design</span>
+            <span class="cert-issuer">Univ of Alberta · 2021</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-name">Database Management Essentials</span>
+            <span class="cert-issuer">Univ of Colorado · 2021</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-name">Agile Software Development</span>
+            <span class="cert-issuer">Univ of Minnesota · 2022</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-name">Cloud Computing Basics</span>
+            <span class="cert-issuer">LearnQuest · 2022</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-name">Cloud Computing Foundations</span>
+            <span class="cert-issuer">Duke University · 2022</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS SECTION -->
+    <section class="section-padding" id="publications">
+      <div class="section-head">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>06 — Peer-Reviewed Research</span>
+        </div>
+        <h2>Published scientific literature.</h2>
+      </div>
+
+      <div class="bento-card publication-card">
+        <div class="publication-badge">
+          <i data-lucide="book-open" style="width:14px"></i>
+          <span>PUBLISHED · MAY 2023</span>
+        </div>
+
+        <h3 class="publication-title">Contactless Menu Ordering System</h3>
+        <span class="publication-journal">Journal of Emerging Technologies and Innovative Research (JETIR)</span>
+
+        <p style="color:var(--text-muted); font-size:1rem; line-height:1.6">
+          Authored peer-reviewed paper describing a contactless ordering system. The paper models a touchless digital ordering framework allowing users to view dynamic menus, submit orders, and complete transactions directly from personal devices without physical contact.
+        </p>
+
+        <div style="display:flex; flex-wrap:wrap; gap:16px; margin-top:8px">
+          <a class="btn btn-secondary btn-sm" href="https://www.jetir.org/view" target="_blank" rel="noopener">
+            <span>Read Paper on JETIR</span>
+            <i data-lucide="external-link" style="width:14px"></i>
+          </a>
+
+          <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('Gudimetla et al., Contactless Menu Ordering System, JETIR, May 2023', 'Citation')">
+            <i data-lucide="copy" style="width:14px"></i>
+            <span>Copy BibTeX Citation</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT HUB -->
+    <section class="section-padding" id="contact">
+      <div class="bento-card contact-card">
         <div>
-          <span class="eyebrow">07 — Contact</span>
-          <h2>Let's build something that ships.</h2>
-          <p>Open to AI engineering, computer vision, and applied ML roles. The fastest way to reach me is LinkedIn or phone — I respond quickly.</p>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            <span>07 — Get in Touch</span>
+          </div>
+          <h2 style="font-family:var(--font-heading); font-size:2.2rem; font-weight:800; margin:16px 0">
+            Let's build something extraordinary together.
+          </h2>
+          <p style="color:var(--text-muted); font-size:1.05rem; max-width:460px">
+            I am open to full-time AI Engineering, Computer Vision, and Software Development roles across the USA. Feel free to call, connect on LinkedIn, or inspect my GitHub repositories.
+          </p>
         </div>
-        <div class="contact-links">
-          <a class="contact-link" href="tel:+13147663166"><span><span class="k">Phone</span><br>+1 (314) 766-3166</span><span>↗</span></a>
-          <a class="contact-link" href="https://www.linkedin.com/in/eswar-sai-chandra-reddy-gudimetla-255970227/" target="_blank" rel="noopener"><span><span class="k">LinkedIn</span><br>/in/eswar-sai-chandra-reddy-gudimetla</span><span>↗</span></a>
-          <a class="contact-link" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener"><span><span class="k">GitHub</span><br>/Eswargudimetla</span><span>↗</span></a>
+
+        <div class="contact-links-stack">
+          <button class="contact-action-btn" onclick="copyToClipboard('+13147663166', 'Phone (+1 314-766-3166)')">
+            <div>
+              <span class="subtext">Phone Number</span><br>
+              <strong>+1 (314) 766-3166</strong>
+            </div>
+            <i data-lucide="copy"></i>
+          </button>
+
+          <a class="contact-action-btn" href="https://www.linkedin.com/in/eswar-sai-chandra-reddy-gudimetla-255970227/" target="_blank" rel="noopener">
+            <div>
+              <span class="subtext">LinkedIn</span><br>
+              <strong>/in/eswar-gudimetla</strong>
+            </div>
+            <i data-lucide="external-link"></i>
+          </a>
+
+          <a class="contact-action-btn" href="https://github.com/Eswargudimetla" target="_blank" rel="noopener">
+            <div>
+              <span class="subtext">GitHub Repositories</span><br>
+              <strong>/Eswargudimetla</strong>
+            </div>
+            <i data-lucide="external-link"></i>
+          </a>
         </div>
       </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Eswar Sai Chandra Reddy Gudimetla — Built with modern glassmorphism & Three.js</p>
+      <p style="margin-top:6px; color:var(--text-faint); font-size:0.75rem">Press <kbd style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px">⌘K</kbd> anywhere to launch Command Palette</p>
     </div>
-  </section>
+  </footer>
 
-</main>
+  <!-- COMMAND PALETTE MODAL -->
+  <div class="cmd-modal-backdrop" id="cmdBackdrop">
+    <div class="cmd-modal">
+      <div class="cmd-input-wrap">
+        <i data-lucide="search"></i>
+        <input type="text" class="cmd-input" id="cmdInput" placeholder="Type a command or search section..." autocomplete="off">
+        <kbd style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-faint)">ESC</kbd>
+      </div>
+      <div class="cmd-results" id="cmdResults"></div>
+    </div>
+  </div>
 
-<footer>© 2026 Eswar Sai Chandra Reddy Gudimetla — built from scratch, line by line.</footer>
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
 
-<script>
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, {threshold:0.12});
-  revealEls.forEach(el=>io.observe(el));
-
-  // Skill bar fill on view
-  const skillEls = document.querySelectorAll('.skill');
-  const skillIO = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        const fill = e.target.querySelector('.bar-fill');
-        fill.style.width = e.target.dataset.pct + '%';
-        skillIO.unobserve(e.target);
-      }
-    });
-  }, {threshold:0.3});
-  skillEls.forEach(el=>skillIO.observe(el));
-
-  // ---------- Scroll progress bar + parallax mesh ----------
-  const progressBar = document.getElementById('scrollProgress');
-  const meshSpans = document.querySelectorAll('.mesh-bg span');
-  function onScroll(){
-    const h = document.documentElement;
-    const pct = (h.scrollTop || document.body.scrollTop) / ((h.scrollHeight || document.body.scrollHeight) - h.clientHeight) * 100;
-    progressBar.style.width = pct + '%';
-    const sc = window.scrollY;
-    meshSpans.forEach((el,i)=>{
-      const factor = 0.04 + i*0.015;
-      el.style.transform = `translateY(${sc*factor}px)`;
-    });
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-
-  // ---------- Hero 3D particle network ----------
-  (function(){
-    const canvas = document.getElementById('hero3d');
-    if(!canvas || !window.THREE) return;
-    const heroSection = document.getElementById('home');
-    let w = heroSection.clientWidth, h = heroSection.clientHeight;
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(55, w/h, 0.1, 100);
-    camera.position.z = 14;
-    const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-    renderer.setSize(w, h);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    const COUNT = 70;
-    const positions = new Float32Array(COUNT*3);
-    const pts = [];
-    for(let i=0;i<COUNT;i++){
-      const x = (Math.random()-0.5)*16;
-      const y = (Math.random()-0.5)*10;
-      const z = (Math.random()-0.5)*10;
-      positions[i*3]=x; positions[i*3+1]=y; positions[i*3+2]=z;
-      pts.push(new THREE.Vector3(x,y,z));
-    }
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(positions,3));
-    const mat = new THREE.PointsMaterial({color:0x8B5CF6, size:0.14, transparent:true, opacity:0.9});
-    const points = new THREE.Points(geo, mat);
-    scene.add(points);
-
-    // connecting lines between nearby points
-    const lineVerts = [];
-    const maxDist = 4.2;
-    for(let i=0;i<pts.length;i++){
-      for(let j=i+1;j<pts.length;j++){
-        if(pts[i].distanceTo(pts[j]) < maxDist){
-          lineVerts.push(pts[i].x,pts[i].y,pts[i].z, pts[j].x,pts[j].y,pts[j].z);
-        }
-      }
-    }
-    const lineGeo = new THREE.BufferGeometry();
-    lineGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lineVerts),3));
-    const lineMat = new THREE.LineBasicMaterial({color:0x22D3EE, transparent:true, opacity:0.18});
-    const lines = new THREE.LineSegments(lineGeo, lineMat);
-    scene.add(lines);
-
-    const group = new THREE.Group();
-    group.add(points); group.add(lines);
-    scene.add(group);
-
-    let mouseX=0, mouseY=0;
-    window.addEventListener('mousemove', (e)=>{
-      mouseX = (e.clientX/window.innerWidth - 0.5);
-      mouseY = (e.clientY/window.innerHeight - 0.5);
-    });
-
-    function animate(){
-      requestAnimationFrame(animate);
-      group.rotation.y += 0.0015;
-      group.rotation.x += (mouseY*0.3 - group.rotation.x)*0.02;
-      group.rotation.y += (mouseX*0.15)*0.001;
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', ()=>{
-      w = heroSection.clientWidth; h = heroSection.clientHeight;
-      camera.aspect = w/h; camera.updateProjectionMatrix();
-      renderer.setSize(w,h);
-    });
-  })();
-
-  // ---------- 3D Skills bar chart ----------
-  (function(){
-    const canvas = document.getElementById('skills3d');
-    if(!canvas || !window.THREE) return;
-
-    const skills = [
-      {n:'Python', s:0.93, c:0x8B5CF6},
-      {n:'Comp. Vision', s:0.88, c:0x8B5CF6},
-      {n:'Deep Learning', s:0.85, c:0x8B5CF6},
-      {n:'NLP', s:0.74, c:0x8B5CF6},
-      {n:'AWS', s:0.82, c:0xFBBF24},
-      {n:'SQL', s:0.80, c:0xFBBF24},
-      {n:'Docker', s:0.76, c:0xFBBF24},
-      {n:'Kubernetes', s:0.70, c:0xFBBF24},
-      {n:'DSA', s:0.82, c:0xF472B6},
-      {n:'Git/CI-CD', s:0.78, c:0xF472B6},
-      {n:'OOD', s:0.75, c:0xF472B6},
-      {n:'JavaScript', s:0.72, c:0xF472B6},
-    ];
-
-    let w = canvas.clientWidth, h = 380;
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, w/h, 0.1, 100);
-    camera.position.set(0, 6, 13);
-    camera.lookAt(0,1,0);
-    const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-    renderer.setSize(w,h);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
-    dl.position.set(5,10,7);
-    scene.add(dl);
-
-    const group = new THREE.Group();
-    const cols = 4, rows = 3, spacing = 2.1;
-    skills.forEach((sk, idx)=>{
-      const col = idx % cols;
-      const row = Math.floor(idx/cols);
-      const height = sk.s * 5.5;
-      const geo = new THREE.BoxGeometry(1.1, height, 1.1);
-      const mat = new THREE.MeshStandardMaterial({color:sk.c, emissive:sk.c, emissiveIntensity:0.18, roughness:0.4});
-      const bar = new THREE.Mesh(geo, mat);
-      bar.position.set((col-cols/2+0.5)*spacing, height/2, (row-rows/2+0.5)*spacing);
-      group.add(bar);
-    });
-
-    const grid = new THREE.GridHelper(11, 11, 0x444a55, 0x2a2f38);
-    grid.position.y = 0;
-    group.add(grid);
-    scene.add(group);
-
-    // drag to rotate
-    let isDragging=false, lastX=0, rotY=0.5;
-    group.rotation.y = rotY;
-    canvas.addEventListener('pointerdown', (e)=>{ isDragging=true; lastX=e.clientX; });
-    window.addEventListener('pointerup', ()=> isDragging=false);
-    window.addEventListener('pointermove', (e)=>{
-      if(!isDragging) return;
-      const dx = e.clientX - lastX;
-      rotY += dx*0.005;
-      lastX = e.clientX;
-    });
-
-    function animate(){
-      requestAnimationFrame(animate);
-      group.rotation.y += (rotY - group.rotation.y)*0.1;
-      if(!isDragging) rotY += 0.0025;
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', ()=>{
-      w = canvas.clientWidth;
-      camera.aspect = w/h; camera.updateProjectionMatrix();
-      renderer.setSize(w,h);
-    });
-  })();
-
-  // ---------- CSS 3D tech tag cloud ----------
-  (function(){
-    const container = document.getElementById('tagCloud');
-    if(!container) return;
-    const tags = ['Python','OpenCV','MediaPipe','TensorFlow','Keras','AWS','Docker','Kubernetes','SQL','JavaScript','Git','OOP','Computer Vision','Cloud'];
-    const radius = 190;
-    const n = tags.length;
-    tags.forEach((t,i)=>{
-      const theta = (i / n) * Math.PI * 2;
-      const x = Math.sin(theta) * radius;
-      const z = Math.cos(theta) * radius;
-      const ry = (theta * 180/Math.PI);
-      const el = document.createElement('div');
-      el.className = 'tag3d';
-      el.textContent = t;
-      el.style.transform = `translate3d(${x}px, ${(Math.random()-0.5)*40}px, ${z}px) rotateY(${ry}deg)`;
-      container.appendChild(el);
-    });
-  })();
-</script>
-
+  <!-- App Script -->
+  <script src="app.js"></script>
 </body>
 </html>
